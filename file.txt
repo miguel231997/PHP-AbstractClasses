@@ -1,0 +1,41 @@
+Abstract classes and methods are fundamental concepts in object-oriented programming (OOP) that allow you to define common behavior and enforce method implementation in derived classes. In PHP, an abstract class serves as a blueprint for other classes and cannot be instantiated directly.
+
+An abstract class is declared using the `abstract` keyword. It can contain both regular methods with implementations and abstract methods without implementations. Abstract methods are defined without providing any code and are marked with the `abstract` keyword. These methods must be implemented in any class that extends the abstract class.
+
+Here's an example that demonstrates the usage of abstract classes and methods in PHP:
+
+```php
+abstract class Animal {
+    protected $name;
+
+    public function __construct($name) {
+        $this->name = $name;
+    }
+
+    abstract public function makeSound();
+}
+
+class Dog extends Animal {
+    public function makeSound() {
+        echo "Woof! My name is " . $this->name . PHP_EOL;
+    }
+}
+
+class Cat extends Animal {
+    public function makeSound() {
+        echo "Meow! My name is " . $this->name . PHP_EOL;
+    }
+}
+
+$dog = new Dog("Buddy");
+$dog->makeSound();  // Output: Woof! My name is Buddy
+
+$cat = new Cat("Whiskers");
+$cat->makeSound();  // Output: Meow! My name is Whiskers
+```
+
+In the example above, the `Animal` class is defined as an abstract class with an abstract method `makeSound()`. It also has a constructor to set the `name` property. The `Dog` and `Cat` classes extend the `Animal` class and implement the `makeSound()` method.
+
+Since `Animal` is an abstract class, it cannot be instantiated directly. However, its derived classes (`Dog` and `Cat`) can be instantiated, and they must provide an implementation for the `makeSound()` method defined in the abstract class.
+
+Abstract classes provide a way to define common behaviors and enforce method implementation in derived classes, promoting code reusability and ensuring consistency across related classes.
